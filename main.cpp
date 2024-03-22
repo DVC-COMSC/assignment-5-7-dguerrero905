@@ -1,24 +1,34 @@
-def generate_sequence(first, second, n):
-    sequence = [first, second]
-    for i in range(2, n):
-        next_num = sequence[-1] + sequence[-2]
-        sequence.append(next_num)
-    return sequence
+#include <iostream>
+using namespace std;
 
-def main():
-    first = int(input("Enter the first initial value: "))
-    second = int(input("Enter the second initial value: "))
-    n = int(input("Enter the number of sequences (N > 2): "))
-    
-    if n <= 2:
-        print("Number of sequences must be greater than 2.")
-        return
-    
-    sequence = generate_sequence(first, second, n)
-    
-    print("Sequence of numbers:")
-    for num in sequence:
-        print(num)
+int main() {
+    int first, second, N;
 
-if __name__ == "__main__":
-    main()
+    // Input the first two initial values
+    cout << "Enter the first initial value: ";
+    cin >> first;
+    cout << "Enter the second initial value: ";
+    cin >> second;
+
+    // Input the number of sequences
+    cout << "Enter the number of sequences (N > 2): ";
+    cin >> N;
+
+    // Print the first two initial values
+    cout << "Sequence of summation values:" << endl;
+    cout << first << " " << second << " ";
+
+    // Generate the sequence of numbers
+    for (int i = 2; i < N; ++i) {
+        int next = first + second;
+        cout << next << " ";
+
+        // Update first and second for the next iteration
+        first = second;
+        second = next;
+    }
+
+    cout << endl;
+
+    return 0;
+}
